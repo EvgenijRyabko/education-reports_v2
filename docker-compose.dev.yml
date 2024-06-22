@@ -1,0 +1,19 @@
+version: "3"
+services:
+  reports-backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./:/var/www/api
+    container_name: reports-backend
+    restart: unless-stopped
+    ports:
+      - "8085:${APP_PORT}"
+      - "9218:9229"
+    networks:
+      - jmu_network
+
+networks:
+  jmu_network:
+    external: true

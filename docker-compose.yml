@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+    reports_backend: 
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - /var/www/storage/Cont/reports:/var/www/api/storage/Cont/reports
+        container_name: reports-backend
+        restart: unless-stopped
+        network_mode: 'host'
